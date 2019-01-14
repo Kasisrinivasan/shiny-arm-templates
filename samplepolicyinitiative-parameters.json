@@ -1,0 +1,9 @@
+ {
+    "listOfAllowedVMSKUs": {
+       "type": "Array",
+       "metadata": {
+          "displayName": "VM SKUs",
+          "strongType": "vmSKUs"
+       }
+    }
+ }

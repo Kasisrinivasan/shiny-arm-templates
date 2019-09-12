@@ -1,0 +1,54 @@
+Configuration WindowsServerDefault
+{
+  param ($MachineName)
+
+  Node $MachineName
+  {
+    #Install the IIS Role
+    WindowsFeature IIS
+    {
+      Ensure = "Present"
+      Name = "Web-Server"
+    }
+
+    #Install ASP.NET 4.5
+    WindowsFeature ASP
+    {
+      Ensure = "Present"
+      Name = "Web-Asp-Net45"
+    }
+
+   #Install Feature "HTTP Activation"
+    WindowsFeature NET-WCF-HTTP-Activation45
+    {
+          Ensure = "Present"
+          Name = "NET-WCF-HTTP-Activation45"
+    }
+
+    #NoInstall RoleService 'Message Queuing Activation'
+    WindowsFeature AS-MSMQ-Activation
+    {
+        Ensure = "Present"
+        Name = "AS-MSMQ-Activation"
+    }
+
+    #NoInstall Feature "Message Queuing"
+		WindowsFeature MSMQ
+		{
+		    Ensure = "Present"
+		    Name = "MSMQ"
+		}
+      #NoInstall Feature "Message Queuing Services"
+        WindowsFeature MSMQ-Services
+        {
+        Ensure = "Present"
+        Name = "MSMQ-Services"
+        }
+          #NoInstall Feature "Message Queuing Server"
+            WindowsFeature MSMQ-Server
+            {
+                Ensure = "Present"
+                Name = "MSMQ-Server"
+            }
+  }
+} 
